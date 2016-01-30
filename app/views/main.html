@@ -1,0 +1,40 @@
+<br>
+<div map-lazy-load="https://maps.google.com/maps/api/js" ng-controller="SampleCtrl">
+   <ng-map zoom="11" center="52.2028002, 0.1244104">
+     <marker ng-repeat="message in messages"
+        position="{{message.position}}"
+        title="{{message.time}}"></marker>
+  </ng-map>
+</div>
+<table class="table table-striped" ng-controller="SampleCtrl">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Device ID</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="message in messages" ng-repeat="count=count+1">
+      <td>{{count}}</td>
+      <td>{{ message.id }}</td>
+      <td>{{ message.longitude }}</td>
+      <td>{{ message.lattitude }}</td>
+      <td>{{ message.time }}</td>
+      <td>
+        <button class="btn btn-danger">Acknowledge</button>
+      </td>
+      <td>
+        <button class="btn btn-primary">Share</button>
+      </td>
+      <td>
+        <span class="glyphicon glyphicon-remove"></span>
+      </td>
+    </tr>
+  </tbody>
+</div>
