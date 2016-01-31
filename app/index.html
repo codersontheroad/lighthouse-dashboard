@@ -18,8 +18,8 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-
-  </head>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    </head>
   <body ng-app="app">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix-top">
       <div class="container-fluid">
@@ -30,7 +30,7 @@
         <!-- Collect the nav links, forms, and other content for toggling-->
         <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#" class="page-scroll">Filter</a></li>
+            <button class="filter btn btn-primary">Filter</button>
           </ul>
         </div>
         <!-- /.navbar-collapse-->
@@ -74,7 +74,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
-    <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

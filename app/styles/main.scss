@@ -66,6 +66,13 @@ body {
 .marketing p + h4 {
     margin-top: 28px;
 }
+.filter{
+    margin-top: 5px !important;
+    margin-right: 5px !important;
+}
+.remove{
+    cursor: pointer;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

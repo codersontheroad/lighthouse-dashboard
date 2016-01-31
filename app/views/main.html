@@ -4,9 +4,12 @@
      <marker ng-repeat="message in messages"
         position="{{message.position}}"
         title="{{message.time}}"></marker>
+       <shape id="circle" name="circle" centered="true"
+      stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2"
+      center="current-position" radius="4000" editable="true" ></shape>
   </ng-map>
 </div>
-<table class="table table-striped" ng-controller="SampleCtrl">
+<table id="table" class="table table-striped" ng-controller="SampleCtrl">
   <thead>
     <tr>
       <th>#</th>
@@ -14,26 +17,26 @@
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Time</th>
-      <th></th>
+      <th>Status</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="message in messages" ng-repeat="count=count+1">
-      <td>{{count}}</td>
+    <tr ng-repeat="message in messages track by $index">
+      <td>{{this.$index + 1}}</td>
       <td>{{ message.id }}</td>
       <td>{{ message.longitude }}</td>
       <td>{{ message.lattitude }}</td>
       <td>{{ message.time }}</td>
       <td>
-        <button class="btn btn-danger">Acknowledge</button>
+        <button class="btn btn-danger ack" ng-click="toggleColor();">Acknowledge</button>
       </td>
       <td>
-        <button class="btn btn-primary">Share</button>
+        <a href="#">Share</a>
       </td>
       <td>
-        <span class="glyphicon glyphicon-remove"></span>
+        <span class="remove glyphicon glyphicon-remove" ng-click="remove()"></span>
       </td>
     </tr>
   </tbody>
