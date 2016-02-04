@@ -11,7 +11,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body {
-  padding: 0;
+  padding: 20px 0 0; // Compensate for the header navbar
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -93,4 +93,9 @@ body {
 
 .navbar-header img {
     margin: 5px;
+}
+
+button.help {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }

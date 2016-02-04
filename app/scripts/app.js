@@ -27,6 +27,11 @@ angular
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
             })
+            .when('/help', {
+                templateUrl: 'views/help.html',
+                controller: 'HelpCtrl',
+                controllerAs: 'help'
+            })
             .otherwise({
                 redirectTo: '/'
             });

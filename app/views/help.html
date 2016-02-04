@@ -1,0 +1,11 @@
+<div class="container" ng-controller="HelpCtrl">
+    <button type="button" class="btn btn-danger help center-block" ng-click="sendAlert()" ng-disabled="messageSent">
+        <img src="images/buoy.png" />
+    </button>
+    <div ng-show="messageSent">
+        Your call for help has been sent.
+    </div>
+    <div ng-show="message.acknowledged">
+        {{ message.response }}
+    </div>
+</div>

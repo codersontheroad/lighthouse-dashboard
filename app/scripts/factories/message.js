@@ -18,6 +18,20 @@ angular.module('lighthouseDashboardApp')
                 MessageFactory.messages.$remove(message);
             };
 
+            MessageFactory.newMessage = function (position) {
+                var time = new Date();
+                return MessageFactory.messages.$add({
+                    longitude: position.coords.longitude,
+                    lattitude: position.coords.latitude,
+                    time: time.toJSON()
+                });
+            };
+
+            MessageFactory.getMessage = function (ref) {
+                var id = ref.key();
+                return MessageFactory.messages.$getRecord(id);
+            };
+
             MessageFactory.messages = MessageFactory.getMessages();
 
             return MessageFactory;
