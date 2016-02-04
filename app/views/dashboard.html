@@ -1,5 +1,4 @@
-<br>
-<div map-lazy-load="https://maps.google.com/maps/api/js" ng-controller="SampleCtrl">
+<div map-lazy-load="https://maps.google.com/maps/api/js" ng-controller="DashboardCtrl">
    <ng-map zoom="11" center="52.2028002, 0.1244104">
      <marker ng-repeat="message in messages"
         position="{{message.position}}"
@@ -9,7 +8,7 @@
       center="current-position" radius="4000" editable="true" ></shape>
   </ng-map>
 </div>
-<table id="table" class="table table-striped" ng-controller="SampleCtrl">
+<table id="table" class="table table-striped" ng-controller="DashboardCtrl">
   <thead>
     <tr>
       <th>#</th>
