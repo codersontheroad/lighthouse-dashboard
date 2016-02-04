@@ -10,7 +10,7 @@ In order to build this project you need to have NodeJS, npm and Bower installed 
 ```Bash
 npm install
 ```
-1. Install all bower components
+2. Install all bower components
 ```Bash
 bower install
 ```
