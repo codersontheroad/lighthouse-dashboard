@@ -13,7 +13,7 @@ angular.module('lighthouseDashboardApp')
         // Inject message factory in scope.
         $scope.messages = MessageFactory.messages;
 
-        $scope.acknowledgeMessage = function (message) {
-            MessageFactory.acknowledgeMessage(message);
-        };
+        $scope.acknowledgeMessage = MessageFactory.acknowledgeMessage;
+
+        $scope.deleteMessage = MessageFactory.deleteMessage;
     });

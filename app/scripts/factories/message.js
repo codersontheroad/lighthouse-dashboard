@@ -14,6 +14,10 @@ angular.module('lighthouseDashboardApp')
                 MessageFactory.messages.$save(message);
             };
 
+            MessageFactory.deleteMessage = function (message) {
+                MessageFactory.messages.$remove(message);
+            };
+
             MessageFactory.messages = MessageFactory.getMessages();
 
             return MessageFactory;

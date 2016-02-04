@@ -1,43 +1,42 @@
 <div map-lazy-load="https://maps.google.com/maps/api/js" ng-controller="DashboardCtrl">
-   <ng-map zoom="11" center="52.2028002, 0.1244104">
-     <marker ng-repeat="message in messages"
-        position="{{message.position}}"
-        title="{{message.time}}"></marker>
-       <shape id="circle" name="circle" centered="true"
-      stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2"
-      center="current-position" radius="4000" editable="true" ></shape>
-  </ng-map>
+    <ng-map zoom="11" center="52.2028002, 0.1244104">
+        <marker ng-repeat="message in messages" position="{{message.position}}" title="{{message.time}}"></marker>
+        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2" center="current-position" radius="4000" editable="true"></shape>
+    </ng-map>
 </div>
 <table id="table" class="table table-striped" ng-controller="DashboardCtrl">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Device ID</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Time</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="m in messages track by $index">
-      <td>{{this.$index + 1}}</td>
-      <td>{{ m.id }}</td>
-      <td>{{ m.longitude }}</td>
-      <td>{{ m.lattitude }}</td>
-      <td>{{ m.time }}</td>
-      <td>
-        <button class="btn btn-danger ack" ng-click="acknowledgeMessage(m);" ng-hide="m.acknowledged">Acknowledge</button>
-        <button class="btn btn-success ack" ng-show="m.acknowledged">Acknowledged</button>
-      </td>
-      <td>
-        <a href="#">Share</a>
-      </td>
-      <td>
-        <span class="remove glyphicon glyphicon-remove" ng-click="remove()"></span>
-      </td>
-    </tr>
-  </tbody>
-</div>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Device ID</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="m in messages track by $index">
+            <td>{{this.$index + 1}}</td>
+            <td>{{ m.id }}</td>
+            <td>{{ m.longitude }}</td>
+            <td>{{ m.lattitude }}</td>
+            <td>{{ m.time }}</td>
+            <td>
+                <button class="btn btn-danger ack" ng-click="acknowledgeMessage(m);" ng-hide="m.acknowledged">Acknowledge</button>
+                <button class="btn btn-success ack" ng-show="m.acknowledged">Acknowledged</button>
+            </td>
+            <td>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-share"></span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove" ng-click="deleteMessage(m)"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
