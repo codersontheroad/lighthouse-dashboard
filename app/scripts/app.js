@@ -19,6 +19,7 @@ angular
     'firebase',
     'ngMap'
   ])
+    .value('messageURL', 'https://sizzling-inferno-4233.firebaseio.com/')
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {

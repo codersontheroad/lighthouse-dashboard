@@ -8,9 +8,11 @@
  * Controller of the lighthouseDashboardApp
  */
 angular.module('lighthouseDashboardApp')
-    .controller('DashboardCtrl', function ($scope, $firebaseArray, NgMap) {
-        var ref = new Firebase("https://sizzling-inferno-4233.firebaseio.com/");
-        $scope.messages = $firebaseArray(ref);
+    .controller('DashboardCtrl', function ($scope, Message, NgMap) {
+
+    // Inject message factory in scope.
+    $scope.message = Message;
+
         $scope.toggleColor = function () {
             var index = this.$index;
             var target = document.getElementsByClassName("ack")[index];
