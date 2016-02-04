@@ -22,14 +22,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="m in message track by $index">
+    <tr ng-repeat="m in messages track by $index">
       <td>{{this.$index + 1}}</td>
       <td>{{ m.id }}</td>
       <td>{{ m.longitude }}</td>
       <td>{{ m.lattitude }}</td>
       <td>{{ m.time }}</td>
       <td>
-        <button class="btn btn-danger ack" ng-click="acknowledgeMessage();">Acknowledge</button>
+        <button class="btn btn-danger ack" ng-click="acknowledgeMessage(m);" ng-hide="m.acknowledged">Acknowledge</button>
+        <button class="btn btn-success ack" ng-show="m.acknowledged">Acknowledged</button>
       </td>
       <td>
         <a href="#">Share</a>
