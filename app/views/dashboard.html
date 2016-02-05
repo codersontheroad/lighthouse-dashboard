@@ -4,7 +4,7 @@
 <!--        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2" center="current-position" radius="4000" editable="true" fill-opacity="0.15"></shape>-->
     </ng-map>
     <div class="filter-container">
-        <button ng-class="{ btn:true, 'btn-primary':true, filter:true, active:filter }" ng-click="toggleFilter()">Filter</button>
+        <button ng-class="{ btn:true, 'btn-primary':!filter, 'btn-success':filter, filter:true }" ng-click="toggleFilter()">Filter</button>
     </div>
 </div>
 <div class="container-fluid">

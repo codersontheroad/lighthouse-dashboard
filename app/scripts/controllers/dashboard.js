@@ -31,6 +31,19 @@ angular.module('lighthouseDashboardApp')
                         radius: 4000,
                         editable: true
                     });
+                    // Add event listeners to react when circle is updated
+                    google.maps.event.addListener($scope.circle, 'center_changed', function () {
+                        $scope.$apply(function () {
+                            $scope.toggleFilter();
+                            $scope.toggleFilter();
+                        });
+                    })
+                    google.maps.event.addListener($scope.circle, 'radius_changed', function () {
+                        $scope.$apply(function () {
+                            $scope.toggleFilter();
+                            $scope.toggleFilter();
+                        });
+                    })
                 }, function () {});
             });
         };
