@@ -17,6 +17,8 @@ angular.module('lighthouseDashboardApp')
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
+                    $scope.circleCenter = pos;
+                    $scope.circleRadius = 4000;
                     // Center the map
                     map.setCenter(pos);
                     // Draw the circle around the current position
@@ -28,20 +30,18 @@ angular.module('lighthouseDashboardApp')
                         fillOpacity: 0.15,
                         map: map,
                         center: pos,
-                        radius: 4000,
+                        radius: $scope.circleRadius,
                         editable: true
                     });
                     // Add event listeners to react when circle is updated
                     google.maps.event.addListener($scope.circle, 'center_changed', function () {
                         $scope.$apply(function () {
-                            $scope.toggleFilter();
-                            $scope.toggleFilter();
+                            $scope.circleCenter = $scope.circle.getCenter();
                         });
                     })
                     google.maps.event.addListener($scope.circle, 'radius_changed', function () {
                         $scope.$apply(function () {
-                            $scope.toggleFilter();
-                            $scope.toggleFilter();
+                            $scope.circleRadius = $scope.circle.getRadius();
                         });
                     })
                 }, function () {});
@@ -79,8 +79,8 @@ angular.module('lighthouseDashboardApp')
 
         $scope.filterByPosition = function (value, index, array) {
             if ($scope.filter) {
-                var distance = google.maps.geometry.spherical.computeDistanceBetween($scope.circle.getCenter(), new google.maps.LatLng(value.latitude, value.longitude));
-                return distance <= $scope.circle.getRadius();
+                var distance = google.maps.geometry.spherical.computeDistanceBetween($scope.circleCenter, new google.maps.LatLng(value.latitude, value.longitude));
+                return distance <= $scope.circleRadius;
             } else {
                 return true;
             }
