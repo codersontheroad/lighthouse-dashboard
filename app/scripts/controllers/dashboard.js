@@ -79,12 +79,30 @@ angular.module('lighthouseDashboardApp')
 
         $scope.filterByPosition = function (value, index, array) {
             if ($scope.filter) {
-                var distance = google.maps.geometry.spherical.computeDistanceBetween($scope.circleCenter, new google.maps.LatLng(value.latitude, value.longitude));
-                return distance <= $scope.circleRadius;
+                return isInsideCircle($scope.circleCenter, $scope.circleRadius, value);
             } else {
                 return true;
             }
         };
 
+        $scope.markerOpacity = function (message) {
+            var opacity = 1;
+            if ($scope.filter) {
+                if (!isInsideCircle($scope.circleCenter, $scope.circleRadius, message)) {
+                    opacity = 0.5;
+                }
+            }
+            return opacity;
+        };
+
         $scope.init();
     });
+
+var isInsideCircle = function (center, radius, pos) {
+    if (center && radius) {
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(center, new google.maps.LatLng(pos.latitude, pos.longitude));
+        return distance <= radius;
+    } else {
+        return true;
+    }
+};
