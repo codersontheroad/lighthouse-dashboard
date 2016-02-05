@@ -22,7 +22,7 @@ angular.module('lighthouseDashboardApp')
                 var time = new Date();
                 return MessageFactory.messages.$add({
                     longitude: position.coords.longitude,
-                    lattitude: position.coords.latitude,
+                    latitude: position.coords.latitude,
                     time: time.toJSON()
                 });
             };

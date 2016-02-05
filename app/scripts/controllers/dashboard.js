@@ -16,4 +16,17 @@ angular.module('lighthouseDashboardApp')
         $scope.acknowledgeMessage = MessageFactory.acknowledgeMessage;
 
         $scope.deleteMessage = MessageFactory.deleteMessage;
+
+        $scope.activeMessageId = '';
+
+        $scope.centerMap = function (message) {
+            $scope.activeMessageId = message.$id;
+            NgMap.getMap().then(function (map) {
+                map.setCenter({lat:message.latitude, lng:message.longitude});
+            });
+        };
+
+        $scope.getPosition = function (message) {
+            return '[' + message.latitude + ',' + message.longitude + ']';
+        };
     });
