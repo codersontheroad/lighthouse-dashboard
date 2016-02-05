@@ -1,14 +1,14 @@
-<div class="map-container" map-lazy-load="https://maps.google.com/maps/api/js" ng-controller="DashboardCtrl">
+<div class="map-container" map-lazy-load="https://maps.google.com/maps/api/js">
     <ng-map zoom="11" center="52.2028002, 0.1244104">
         <marker ng-repeat="message in messages" position="{{getPosition(message)}}" title="{{message.time}}"></marker>
-        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2" center="current-position" radius="4000" editable="true" fill-opacity="0.15"></shape>
+<!--        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2" center="current-position" radius="4000" editable="true" fill-opacity="0.15"></shape>-->
     </ng-map>
     <div class="filter-container">
-        <button class="btn btn-primary filter" ng-click="toggleFilter()">Filter</button>
+        <button ng-class="{ btn:true, 'btn-primary':true, filter:true, active:filter }" ng-click="toggleFilter()">Filter</button>
     </div>
 </div>
 <div class="container-fluid">
-    <table id="table" class="table table-hover" ng-controller="DashboardCtrl">
+    <table id="table" class="table table-hover">
         <thead>
             <tr>
                 <th>#</th>
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="m in messages track by $index" ng-click="centerMap(m)" ng-class="{ message:true, info:(activeMessageId===m.$id) }">
+            <tr ng-repeat="m in messages | filter:filterByPosition track by $index" ng-click="centerMap(m)" ng-class="{ message:true, info:(activeMessageId===m.$id) }">
                 <td>{{this.$index + 1}}</td>
                 <td>{{ m.latitude }}</td>
                 <td>{{ m.longitude }}</td>
