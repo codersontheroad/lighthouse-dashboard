@@ -103,6 +103,11 @@ button.help {
 .map-container {
     position: relative;
 }
+.map-container ng-map {
+    display: block;
+    height: 300px;
+    height: 50vh;
+}
 .filter-container {
     z-index: 100;
     position: absolute;
