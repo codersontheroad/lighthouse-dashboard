@@ -1,6 +1,6 @@
 <div class="map-container" map-lazy-load="https://maps.google.com/maps/api/js">
     <ng-map zoom="11" center="52.2028002, 0.1244104" default-style="false">
-        <marker ng-repeat="message in messages" position="{{getPosition(message)}}" title="{{message.time}}" opacity="{{markerOpacity(message)}}"></marker>
+        <marker ng-repeat="message in messages" position="{{getPosition(message)}}" title="{{message.time}}" opacity="{{markerOpacity(message)}}" icon="{{markerIcon(message)}}"></marker>
 <!--        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8" stroke-weight="2" center="current-position" radius="4000" editable="true" fill-opacity="0.15"></shape>-->
     </ng-map>
     <div class="filter-container">
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="m in messages | filter:filterByPosition track by $index" ng-click="centerMap(m)" ng-class="{ message:true, info:(activeMessageId===m.$id) }">
+            <tr ng-repeat="m in messages | filter:filterByPosition track by $index" ng-click="selectMessage(m)" ng-class="{ message:true, info:(activeMessageId===m.$id) }" ng-mouseover="highlightMessage(m)" ng-mouseleave="removeHighlight()">
                 <td>{{this.$index + 1}}</td>
                 <td>{{ m.latitude }}</td>
                 <td>{{ m.longitude }}</td>

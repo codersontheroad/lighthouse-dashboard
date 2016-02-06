@@ -58,8 +58,9 @@ angular.module('lighthouseDashboardApp')
         $scope.deleteMessage = MessageFactory.deleteMessage;
 
         $scope.activeMessageId = '';
+        $scope.highlightedMessageId = '';
 
-        $scope.centerMap = function (message) {
+        $scope.selectMessage = function (message) {
             $scope.activeMessageId = message.$id;
             NgMap.getMap().then(function (map) {
                 map.setCenter({
@@ -86,13 +87,32 @@ angular.module('lighthouseDashboardApp')
         };
 
         $scope.markerOpacity = function (message) {
-            var opacity = 1;
+            var opacity = 0.75;
             if ($scope.filter) {
                 if (!isInsideCircle($scope.circleCenter, $scope.circleRadius, message)) {
                     opacity = 0.5;
                 }
             }
+            if ($scope.highlightedMessageId == message.$id) {
+                opacity = 1;
+            }
             return opacity;
+        };
+
+        $scope.markerIcon = function (message) {
+            var iconUrl = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            if ($scope.activeMessageId == message.$id) {
+                iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            }
+            return iconUrl;
+        };
+
+        $scope.highlightMessage = function (message) {
+            $scope.highlightedMessageId = message.$id;
+        };
+
+        $scope.removeHighlight = function () {
+            $scope.highlightedMessageId = '';
         };
 
         $scope.init();
