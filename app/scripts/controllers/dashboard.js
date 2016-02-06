@@ -44,7 +44,9 @@ angular.module('lighthouseDashboardApp')
                             $scope.circleRadius = $scope.circle.getRadius();
                         });
                     })
-                }, function () {});
+                }, function (err) {
+                    console.warn('ERROR(' + err.code + '): ' + err.message);
+                });
             });
         };
 
@@ -55,7 +57,10 @@ angular.module('lighthouseDashboardApp')
 
         $scope.acknowledgeMessage = MessageFactory.acknowledgeMessage;
 
-        $scope.deleteMessage = MessageFactory.deleteMessage;
+        $scope.deleteMessage = function (message, $event) {
+            MessageFactory.deleteMessage(message);
+            $event.stopPropagation();
+        };
 
         $scope.activeMessageId = '';
         $scope.highlightedMessageId = '';
