@@ -22,12 +22,12 @@ angular
     .value('messageURL', 'https://sizzling-inferno-4233.firebaseio.com/')
     .config(function ($routeProvider) {
         $routeProvider
-            .when('/', {
+            .when('/dashboard', {
                 templateUrl: 'views/dashboard.html',
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
             })
-            .when('/help', {
+            .when('/', {
                 templateUrl: 'views/help.html',
                 controller: 'HelpCtrl',
                 controllerAs: 'help'

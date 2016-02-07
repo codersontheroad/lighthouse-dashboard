@@ -12,13 +12,16 @@ angular.module('lighthouseDashboardApp')
 
         $scope.message = '';
         $scope.messageSent = false;
+        $scope.messageSending = false;
 
         $scope.sendAlert = function () {
+            $scope.messageSending = true;
             var onSuccess = function (position) {
                 MessageFactory.newMessage(position, $scope.message)
                     .then(function(ref) {
                     $scope.message = MessageFactory.getMessage(ref);
                     $scope.messageSent = true;
+                    $scope.messageSending = false;
                 });
             };
 
